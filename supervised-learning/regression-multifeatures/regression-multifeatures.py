@@ -1,5 +1,6 @@
 import numpy as np
 import os
+from visualization import plot_features_vs_target
 
 def load_data_from_csv(filename):
     """Carica i dati dal CSV in un array numpy"""
@@ -37,3 +38,5 @@ print(X.shape)
 print(y.shape)
 print(X[:5])
 print(y[:5])
+
+plot_features_vs_target(X, y)
