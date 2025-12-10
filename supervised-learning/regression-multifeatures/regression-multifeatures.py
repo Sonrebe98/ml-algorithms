@@ -1,5 +1,6 @@
 import numpy as np
 import os
+import matplotlib.pyplot as plt
 from visualization import plot_features_vs_target
 
 def load_data_from_csv(filename):
@@ -32,6 +33,11 @@ def load_data_from_csv(filename):
 script_dir = os.path.dirname(os.path.abspath(__file__))
 csv_path = os.path.join(script_dir, 'house_price_regression_dataset.csv')
 
+# Leggi i nomi delle features dal CSV
+with open(csv_path, 'r') as file:
+    header = file.readline().strip()
+    feature_names = header.split(',')[:-1]  # Tutte le colonne tranne l'ultima (target)
+
 X, y = load_data_from_csv(csv_path)
 
 print(X.shape)
@@ -39,4 +45,5 @@ print(y.shape)
 print(X[:5])
 print(y[:5])
 
-plot_features_vs_target(X, y)
+plot_features_vs_target(X, y, feature_names=feature_names)
+plt.show()
